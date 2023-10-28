@@ -1,0 +1,18 @@
+.span_item {
+  margin-left: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.content_item {
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+.active {
+  color: rgb(75, 118, 234);
+  font-weight: 600;
+}

@@ -1,0 +1,78 @@
+<h1 mat-dialog-title>Edit student</h1>
+<div mat-dialog-content>
+	<form [formGroup]="studentGroup"
+		(submit)="onSubmit()"
+		style="display: flex; flex-direction: column;">
+		<mat-form-field style="min-width: 25rem;">
+			<mat-label>Name</mat-label>
+			<input matInput
+				formControlName="name">
+			<!-- <mat-error *ngIf="getErrorControl('name').errors?.['minlength']">
+				The field min 5 characters
+			</mat-error>
+			<mat-error *ngIf="getErrorControl('name').errors?.['required']">
+				The field is required
+			</mat-error> -->
+			<mat-error>
+				{{studentGroup.get('lastname')?.errors | controlStudent}}
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field style="min-width: 25rem;">
+			<mat-label>Lastname</mat-label>
+			<input matInput
+				formControlName="lastname">
+			<!-- <mat-error *ngIf="getErrorControl('lastname').errors?.['required']">
+				The field is required
+			</mat-error> -->
+			<mat-error>
+				{{studentGroup.get('lastname')?.errors | controlStudent}}
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field style="min-width: 25rem;">
+			<mat-label>Email</mat-label>
+			<input matInput
+				formControlName="email">
+			<!-- <mat-error *ngIf="getErrorControl('email').errors?.['email']">
+				The field must be email
+			</mat-error> -->
+			<mat-error *ngIf="studentGroup.controls['email'].hasError('repeatEmail')">
+				The eamil already exist!
+			</mat-error>
+			<mat-error>
+				{{studentGroup.get('email')?.errors | controlStudent}}
+			</mat-error>
+		</mat-form-field>
+
+		<!-- Inject data -->
+		<mat-form-field style="min-width: 25rem;">
+			<mat-label>Course</mat-label>
+			<mat-select formControlName="course">
+				<ng-container *ngFor="let course of courses">
+					<mat-option value="{{course.id}}">
+						{{course.description}}
+					</mat-option>
+				</ng-container>
+			</mat-select>
+		</mat-form-field>
+
+		<div mat-dialog-actions
+			style="display: flex;flex-direction: row; justify-content: end;">
+			<button mat-button
+				type="submit"
+				mat-raised-button
+				color="primary">
+				Register
+			</button>
+
+			<button mat-button
+				mat-raised-button
+				color="warn"
+				mat-dialog-close>
+				Close
+			</button>
+		</div>
+
+	</form>
+</div>

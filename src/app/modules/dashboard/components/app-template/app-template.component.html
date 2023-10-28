@@ -1,0 +1,35 @@
+
+<mat-toolbar color="primary"
+	style="display: flex; flex-direction: row; justify-content: space-between;">
+	<button (click)="drawer.toggle()"
+		mat-icon-button
+		class="example-icon"
+		aria-label="Example icon-button with menu icon">
+		<mat-icon>menu</mat-icon>
+	</button>
+	<button [matMenuTriggerFor]="menu"
+		mat-icon-button
+		class="example-icon"
+		aria-label="Example icon-button with menu icon">
+		<mat-icon>drag_indicator</mat-icon>
+	</button>
+	<mat-menu #menu="matMenu">
+		<button mat-menu-item>Profile</button>
+		<button mat-menu-item>Logout</button>
+	</mat-menu>
+</mat-toolbar>
+
+<mat-drawer-container style="width: 100%; height: 100vh;"
+	class="example-container"
+	autosize>
+	<mat-drawer #drawer
+		class="example-sidenav"
+		mode="side">
+		<app-side-items></app-side-items>
+	</mat-drawer>
+
+	<div class="example-sidenav-content">
+		<ng-content></ng-content>
+	</div>
+
+</mat-drawer-container>
