@@ -1,6 +1,6 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
-import { students } from 'src/app/core/data/students';
 import { IStudent } from 'src/app/core/models/interface/student.interface';
+import { students } from 'src/app/data/students';
 
 export function validateEmail(
   control: AbstractControl

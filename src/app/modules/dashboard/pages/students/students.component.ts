@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { courses } from 'src/app/core/data/courses';
 import { ICourse } from 'src/app/core/models/interface/course.interface';
 import { IStudent } from 'src/app/core/models/interface/student.interface';
 import { students } from 'src/app/data/students';
 import { DialogRegisterComponent } from '../../components/dialogs/dialog-register/dialog-register.component';
+import { courses } from 'src/app/data/courses';
+import { DialogDeleteComponent } from '../../components/dialogs/dialog-delete/dialog-delete.component';
+import { DialogEditComponent } from '../../components/dialogs/dialog-edit/dialog-edit.component';
+import { DialogDetailComponent } from '../../components/dialogs/dialog-detail/dialog-detail.component';
 
 @Component({
   selector: 'app-students',
@@ -34,21 +37,25 @@ export class StudentsComponent {
     });
   }
   openDialogDelete(id: number): void {
-    // const dialogRef = this.dialog.open(DialogDeleteComponent, { data: id });
-    // dialogRef.afterClosed().subscribe(() => {
-    // 	this.dataSource.data = students;
-    // });
+    const dialogRef = this.dialog.open(DialogDeleteComponent, { data: id });
+    dialogRef.afterClosed().subscribe(() => {
+      this.dataSource.data = students;
+    });
   }
   openDialogEdit(id: number) {
-    // const dialogRef = this.dialog.open(DialogEditComponent, { data: { id, courses: this.dataCourses } });
-    // dialogRef.afterClosed().subscribe(() => {
-    // 	this.dataSource.data = students;
-    // });
+    const dialogRef = this.dialog.open(DialogEditComponent, {
+      data: { id, courses: this.dataCourses },
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.dataSource.data = students;
+    });
   }
   openDialogDetail(id: number) {
-    // const dialogRef = this.dialog.open(DialogDetailComponent, { data: { id, courses: this.dataCourses } });
-    // dialogRef.afterClosed().subscribe(() => {
-    // 	this.dataSource.data = students;
-    // });
+    const dialogRef = this.dialog.open(DialogDetailComponent, {
+      data: { id, courses: this.dataCourses },
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.dataSource.data = students;
+    });
   }
 }

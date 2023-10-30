@@ -16,6 +16,12 @@ import { DialogEditComponent } from './components/dialogs/dialog-edit/dialog-edi
 import { DialogRegisterComponent } from './components/dialogs/dialog-register/dialog-register.component';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DialogDetailComponent } from './components/dialogs/dialog-detail/dialog-detail.component';
+import { DirectivesModule } from 'src/app/shared/directives/directives.module';
+import {
+  MatAutocompleteSelectedEvent,
+  MatAutocompleteModule,
+} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -27,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DialogDeleteComponent,
     DialogEditComponent,
     DialogRegisterComponent,
+    DialogDetailComponent,
   ],
   imports: [
     FormsModule,
@@ -39,6 +46,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatMenuModule,
     DashboardRoutingModule,
     PipesModule,
+    DirectivesModule,
+    MatMenuModule,
+    MatAutocompleteModule,
   ],
 })
 export class DashboardModule {}
