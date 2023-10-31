@@ -9,7 +9,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { SideItemsComponent } from './components/side-items/side-items.component';
 import { HomeComponent } from './pages/home/home.component';
-import { DashboardRoutingModule } from './dashboard-routing.module';
 import { StudentsComponent } from './pages/students/students.component';
 import { DialogDeleteComponent } from './components/dialogs/dialog-delete/dialog-delete.component';
 import { DialogEditComponent } from './components/dialogs/dialog-edit/dialog-edit.component';
@@ -44,7 +43,6 @@ import {
     MatToolbarModule,
     MatSidenavModule,
     MatMenuModule,
-    DashboardRoutingModule,
     PipesModule,
     DirectivesModule,
     MatMenuModule,
