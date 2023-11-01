@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>Register teacher</h1>
+<div mat-dialog-content>
+	<form [formGroup]="teacherGroup"
+		(submit)="onSubmit()"
+		style="display: flex; flex-direction: column;">
+		<mat-form-field style="min-width: 25rem;">
+			<mat-label>Name</mat-label>
+			<input matInput
+				formControlName="fullname">
+			<mat-error>
+				{{teacherGroup.get('fullname')?.errors | controlTeacher}}
+			</mat-error>
+		</mat-form-field>
+
+		<div mat-dialog-actions
+			style="display: flex;flex-direction: row; justify-content: end;">
+			<button mat-button
+				type="submit"
+				mat-raised-button
+				color="primary">
+				Register
+			</button>
+
+			<button mat-button
+				mat-raised-button
+				color="warn"
+				mat-dialog-close>
+				Close
+			</button>
+		</div>
+
+	</form>
+</div>

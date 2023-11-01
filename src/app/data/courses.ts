@@ -8,11 +8,6 @@ export const courses: ICourse[] = [
     description: 'Specialist in Java 2023',
     type: [ETypeCourse.PROGRAMMING, ETypeCourse.TECHONOLOGY],
     enabled: true,
-    teacher: {
-      id: 1,
-      fullname: 'Teacher Pedro',
-      enabled: true,
-    },
   },
   {
     id: 2,
@@ -20,11 +15,6 @@ export const courses: ICourse[] = [
     description: 'Specialist in React 2023',
     type: [ETypeCourse.PROGRAMMING, ETypeCourse.TECHONOLOGY],
     enabled: true,
-    teacher: {
-      id: 1,
-      fullname: 'Teacher Pedro',
-      enabled: true,
-    },
   },
   {
     id: 3,
@@ -32,10 +22,5 @@ export const courses: ICourse[] = [
     description: 'Specialist in Power BI 2023',
     type: [ETypeCourse.DATA, ETypeCourse.TECHONOLOGY],
     enabled: true,
-    teacher: {
-      id: 1,
-      fullname: 'Teacher Pedro',
-      enabled: true,
-    },
   },
 ];

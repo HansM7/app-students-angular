@@ -21,6 +21,8 @@ import {
   MatAutocompleteSelectedEvent,
   MatAutocompleteModule,
 } from '@angular/material/autocomplete';
+import { TeachersComponent } from './pages/teachers/teachers.component';
+import { DialogRegisterComponentTeacher } from './components/dialogs-teacher/dialog-register/dialog-register.component';
 
 @NgModule({
   declarations: [
@@ -29,10 +31,12 @@ import {
     SideItemsComponent,
     HomeComponent,
     StudentsComponent,
+    TeachersComponent,
     DialogDeleteComponent,
     DialogEditComponent,
     DialogRegisterComponent,
     DialogDetailComponent,
+    DialogRegisterComponentTeacher,
   ],
   imports: [
     FormsModule,

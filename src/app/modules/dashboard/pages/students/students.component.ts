@@ -27,7 +27,9 @@ export class StudentsComponent {
     'detail',
   ];
   dataCourses: ICourse[] = courses;
+
   constructor(public dialog: MatDialog) {}
+
   openDialogRegister(): void {
     const dialogRef = this.dialog.open(DialogRegisterComponent, {
       data: this.dataCourses,
