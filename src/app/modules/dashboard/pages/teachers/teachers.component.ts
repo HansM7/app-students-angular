@@ -6,6 +6,9 @@ import { ITeacher } from 'src/app/core/models/interface/tracher.interface';
 import { courses } from 'src/app/data/courses';
 import { teachers } from 'src/app/data/teachers';
 import { DialogRegisterComponentTeacher } from '../../components/dialogs-teacher/dialog-register/dialog-register.component';
+import { DialogEditComponentTeacher } from '../../components/dialogs-teacher/dialog-edit/dialog-edit.component';
+import { DialogDeleteComponentTeacher } from '../../components/dialogs-teacher/dialog-delete/dialog-delete.component';
+import { DialogDetailComponentTeacher } from '../../components/dialogs-teacher/dialog-detail/dialog-detail.component';
 
 @Component({
   selector: 'app-teachers',
@@ -36,9 +39,30 @@ export class TeachersComponent implements OnInit {
       this.dataSource.data = teachers;
     });
   }
-  openDialogEdit(id: Number): void {}
-  openDialogDelete(id: Number): void {}
-  openDialogDetail(id: Number): void {}
+  openDialogEdit(id: number): void {
+    const dialogRef = this.dialog.open(DialogEditComponentTeacher, {
+      data: { id },
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.dataSource.data = teachers;
+    });
+  }
+  openDialogDelete(id: number): void {
+    const dialogRef = this.dialog.open(DialogDeleteComponentTeacher, {
+      data: { id },
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.dataSource.data = teachers;
+    });
+  }
+  openDialogDetail(id: number): void {
+    const dialogRef = this.dialog.open(DialogDetailComponentTeacher, {
+      data: { id, courses: this.dataCourses },
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.dataSource.data = teachers;
+    });
+  }
 
   registerTeacher(): void {}
 

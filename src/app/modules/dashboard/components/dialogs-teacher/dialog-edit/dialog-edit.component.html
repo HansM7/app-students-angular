@@ -1,1 +1,47 @@
-<p>dialog-edit works!</p>
+<h1 mat-dialog-title>Edit student</h1>
+<div mat-dialog-content>
+	<form [formGroup]="teacherGroup"
+		(submit)="onSubmit()"
+		style="display: flex; flex-direction: column;">
+		<mat-form-field style="min-width: 25rem;">
+			<mat-label>Fullname</mat-label>
+			<input matInput
+				formControlName="fullname">
+			<mat-error *ngIf="getErrorControl('fullname').errors?.['minlength']">
+				The field min 5 characters
+			</mat-error>
+			<mat-error *ngIf="getErrorControl('fullname').errors?.['required']">
+				The field is required
+			</mat-error>
+		</mat-form-field>
+		<!-- Inject data -->
+		<mat-form-field style="min-width: 25rem;">
+			<mat-label>Enabled</mat-label>
+			<mat-select formControlName="enabled">
+				<mat-option [attr.selected]="teacher?.enabled"
+					value="enabled">
+					ENABLED
+				</mat-option>
+				<mat-option value="disabled">DISABLED</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<div mat-dialog-actions
+			style="display: flex;flex-direction: row; justify-content: end;">
+			<button mat-button
+				type="submit"
+				mat-raised-button
+				color="primary">
+				Save
+			</button>
+
+			<button mat-button
+				mat-raised-button
+				color="warn"
+				mat-dialog-close>
+				Close
+			</button>
+		</div>
+
+	</form>
+</div>

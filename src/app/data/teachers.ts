@@ -7,6 +7,6 @@ export const teachers: ITeacher[] = [
     id: 1,
     fullname: 'Teacher Pedro',
     enabled: true,
-    course: [courses[0], courses[1]],
+    course: [courses[1]],
   },
 ];

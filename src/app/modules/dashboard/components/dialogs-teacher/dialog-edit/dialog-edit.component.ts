@@ -31,4 +31,20 @@ export class DialogEditComponentTeacher {
       enabled: [this.teacher?.enabled],
     });
   }
+
+  getErrorControl(field: string) {
+    return this.teacherGroup.controls[field];
+  }
+
+  onSubmit(): void {
+    if (this.teacherGroup.valid) {
+      const fullname = this.teacherGroup.value['fullname'];
+      const enabled = this.teacherGroup.value['enabled'];
+      this.teacherService.editTeacher(this.teacher?.id as Number, {
+        fullname,
+        enabled,
+      });
+      this.dialogRef.close();
+    }
+  }
 }

@@ -1,1 +1,30 @@
-<p>dialog-delete works!</p>
+<h1 mat-dialog-title>Delete student</h1>
+<div mat-dialog-content>
+
+	<div style="margin-bottom: 2rem;">
+		Are you sure to eliminate
+		<span [delete]="'delete'"
+			appDialogs>
+			{{teacher?.fullname}}
+		</span>
+		?
+	</div>
+
+	<div mat-dialog-actions
+		style="display: flex;flex-direction: row; justify-content: end;">
+		<button (click)="deleteTeacher()"
+			mat-button
+			type="submit"
+			mat-raised-button
+			color="accent">
+			Confirm delete
+		</button>
+
+		<button mat-button
+			mat-raised-button
+			color="warn"
+			mat-dialog-close>
+			Cancel
+		</button>
+	</div>
+</div>

@@ -7,5 +7,5 @@ export interface ITeacherForm {
 
 export interface ITeacher extends ITeacherForm {
   id: number;
-  course: ICourse[] | [];
+  course: ICourse[];
 }

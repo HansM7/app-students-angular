@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ICourse } from 'src/app/core/models/interface/course.interface';
 import {
   ITeacher,
   ITeacherForm,
@@ -29,5 +30,24 @@ export class TeacherService {
     return undefined;
   }
 
-  editTeacher(): void {}
+  editTeacher(id: Number, data: ITeacherForm): void {
+    const teacher = this.teachers.find((teacher) => teacher.id === id);
+    if (teacher) {
+      teacher.fullname = data.fullname;
+      teacher.enabled = data.enabled;
+    }
+  }
+
+  deleteTeacher(id: Number): void {
+    const index = this.teachers.findIndex((s) => s.id === id);
+    if (index !== -1) this.teachers.splice(index, 1);
+  }
+
+  asignedCourse(id: Number, course: ICourse): void {
+    const teacher = this.teachers.find((teacher) => teacher.id === id);
+
+    if (teacher) {
+      teacher.course.push(course);
+    }
+  }
 }

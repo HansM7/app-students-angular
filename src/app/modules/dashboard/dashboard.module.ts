@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { RouterModule } from '@angular/router';
@@ -23,6 +23,9 @@ import {
 } from '@angular/material/autocomplete';
 import { TeachersComponent } from './pages/teachers/teachers.component';
 import { DialogRegisterComponentTeacher } from './components/dialogs-teacher/dialog-register/dialog-register.component';
+import { DialogEditComponentTeacher } from './components/dialogs-teacher/dialog-edit/dialog-edit.component';
+import { DialogDeleteComponentTeacher } from './components/dialogs-teacher/dialog-delete/dialog-delete.component';
+import { DialogDetailComponentTeacher } from './components/dialogs-teacher/dialog-detail/dialog-detail.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,9 @@ import { DialogRegisterComponentTeacher } from './components/dialogs-teacher/dia
     DialogRegisterComponent,
     DialogDetailComponent,
     DialogRegisterComponentTeacher,
+    DialogEditComponentTeacher,
+    DialogDeleteComponentTeacher,
+    DialogDetailComponentTeacher,
   ],
   imports: [
     FormsModule,
@@ -52,5 +58,6 @@ import { DialogRegisterComponentTeacher } from './components/dialogs-teacher/dia
     MatMenuModule,
     MatAutocompleteModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class DashboardModule {}
