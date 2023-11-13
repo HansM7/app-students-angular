@@ -17,13 +17,15 @@ export class DialogDeleteComponent {
     private dialogRef: MatDialogRef<DialogRegisterComponent>,
     public studentService: StudentService
   ) {
-    this.student = studentService.findStudent(id);
+    this.studentService.findStudent(this.id).subscribe((data: IStudent) => {
+      this.student = data;
+    });
+    // this.student = studentService.findStudent(id);
   }
 
   deleteStudent(): void {
-    if (this.student) {
-      this.studentService.deleteStudentService(this.student?.id); //otro modo sería this.student = studentService.findStudent(id) as IStudent;
+    this.studentService.deleteStudent(this.id).subscribe((data) => {
       this.dialogRef.close();
-    }
+    });
   }
 }

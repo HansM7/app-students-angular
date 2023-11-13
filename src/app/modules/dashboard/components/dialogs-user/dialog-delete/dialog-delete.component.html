@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Delete User</h1>
+<div mat-dialog-content>
+
+	<div style="margin-bottom: 2rem;">
+		Are you sure to eliminate
+		<span [delete]="'delete'"
+			appDialogs>
+			{{user?.fullname}}
+		</span>
+		?
+	</div>
+
+	<div mat-dialog-actions
+		style="display: flex;flex-direction: row; justify-content: end;">
+		<button (click)="deleteUser()"
+			mat-button
+			type="submit"
+			mat-raised-button
+			color="accent">
+			Confirm delete
+		</button>
+
+		<button mat-button
+			mat-raised-button
+			color="warn"
+			mat-dialog-close>
+			Cancel
+		</button>
+	</div>
+</div>

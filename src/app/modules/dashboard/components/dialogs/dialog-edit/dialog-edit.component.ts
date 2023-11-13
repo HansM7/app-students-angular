@@ -26,8 +26,9 @@ export class DialogEditComponent {
     private dialogRef: MatDialogRef<DialogEditComponent>,
     public studentService: StudentService
   ) {
-    this.student = studentService.findStudent(data.id);
+    // this.student = studentService.findStudent(data.id);
     this.courses = data.courses;
+
     this.studentGroup = this.formBuilder.group({
       name: [
         this.student?.name,
@@ -44,7 +45,16 @@ export class DialogEditComponent {
       enabled: [this.student?.enabled],
     });
 
-    console.log(this.student);
+    this.studentService.findStudent(this.data.id).subscribe((student) => {
+      console.log(student);
+      this.student = student;
+      this.studentGroup.patchValue({
+        name: this.student?.name,
+        lastname: this.student?.lastname,
+        email: this.student?.email,
+        enabled: this.student?.enabled,
+      });
+    });
   }
 
   getErrorControl(field: string) {
@@ -52,20 +62,13 @@ export class DialogEditComponent {
   }
 
   onSubmit(): void {
-    console.log(this.studentGroup.value);
-    const name = this.studentGroup.value['name'];
-    const lastname = this.studentGroup.value['lastname'];
-    const email = this.studentGroup.value['email'];
-    const enabled = this.studentGroup.value['enabled'];
+    const formData = this.studentGroup.getRawValue();
+    console.log(formData);
 
-    const data: IStudentForm = {
-      name,
-      lastname,
-      email,
-      enabled,
-    } as IStudentForm;
-
-    this.studentService.updateStudentService(this.student?.id as number, data);
-    this.dialogRef.close();
+    this.studentService
+      .updateStudentService(this.data.id, formData)
+      .subscribe((data) => {
+        this.dialogRef.close();
+      });
   }
 }

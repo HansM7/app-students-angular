@@ -6,31 +6,19 @@
 			<input [disabled]="true"
 				[value]="student.name"
 				matInput>
-
-
 		</mat-form-field>
-
-
 		<mat-form-field style="min-width: 25rem;">
 			<mat-label>Lastname</mat-label>
 			<input [disabled]="true"
 				[value]="student.lastname"
 				matInput>
-
-
 		</mat-form-field>
-
-
 		<mat-form-field style="min-width: 25rem;">
 			<mat-label>Email</mat-label>
 			<input [disabled]="true"
 				[value]="student.email"
 				matInput>
-
-
 		</mat-form-field>
-
-
 		<!-- Inject data -->
 		<mat-form-field style="min-width: 25rem;">
 			<mat-label>Enabled</mat-label>
@@ -40,24 +28,19 @@
 				<mat-option value="disabled">DISABLED</mat-option>
 			</mat-select>
 		</mat-form-field>
-
-
-		<!-- Data courses -->
-
-
 		<div>
+			<!-- courses -->
 			<h5>Courses</h5>
 			<mat-chip-listbox #chipList
 				style="margin-bottom: 2rem;">
-				<mat-chip *ngFor="let course of student.courses"
+				<mat-chip *ngFor="let course of student?.courses"
 					[removable]="true"
 					(removed)="remove(course.course)">
 					{{ course.course.title }}
 					<mat-icon matChipRemove>cancel</mat-icon>
 				</mat-chip>
 			</mat-chip-listbox>
-
-
+			<!-- !end courses -->
 			<div>
 				<mat-form-field style="width: 100%;">
 					<mat-label>Description</mat-label>
@@ -67,8 +50,6 @@
 						matInput
 						placeholder="Add a course">
 				</mat-form-field>
-
-
 				<mat-autocomplete #auto="matAutocomplete"
 					(optionSelected)="selected($event)">
 					<mat-option *ngFor="let course of filteredCourses"
@@ -76,16 +57,10 @@
 						{{ course.title }}
 					</mat-option>
 				</mat-autocomplete>
-
-
 			</div>
 		</div>
-
-
 		<div mat-dialog-actions
 			style="display: flex;flex-direction: row; justify-content: end;">
-
-
 			<button mat-button
 				mat-raised-button
 				color="warn"
@@ -93,7 +68,5 @@
 				Close
 			</button>
 		</div>
-
-
 	</div>
 </div>

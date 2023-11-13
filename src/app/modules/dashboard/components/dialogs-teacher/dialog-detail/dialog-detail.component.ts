@@ -38,21 +38,20 @@ export class DialogDetailComponentTeacher {
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    const selectedCourse = this.courseService.courses.find(
-      (course) => course.title == event.option.value
-    );
-
-    if (selectedCourse) {
-      this.teacherService.asignedCourse(this.teacher.id, selectedCourse);
-      // console.log(this.teacherService.students);
-    }
+    // const selectedCourse = this.courseService.courses.find(
+    //   (course) => course.title == event.option.value
+    // );
+    // if (selectedCourse) {
+    //   this.teacherService.asignedCourse(this.teacher.id, selectedCourse);
+    //   // console.log(this.teacherService.students);
+    // }
   }
 
   public filterSugestions(event: Event): void {
-    const input = (event.target as HTMLInputElement).value;
-    this.filteredCourses = this.courseService.courses.filter((course) =>
-      course.title.toLowerCase().includes(input.toLowerCase())
-    );
-    console.log(this.filteredCourses);
+    // const input = (event.target as HTMLInputElement).value;
+    // this.filteredCourses = this.courseService.courses.filter((course) =>
+    //   course.title.toLowerCase().includes(input.toLowerCase())
+    // );
+    // console.log(this.filteredCourses);
   }
 }

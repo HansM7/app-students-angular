@@ -5,6 +5,7 @@ import { AuthComponent } from './modules/auth/auth.component';
 import { HomeComponent } from './modules/dashboard/pages/home/home.component';
 import { StudentsComponent } from './modules/dashboard/pages/students/students.component';
 import { TeachersComponent } from './modules/dashboard/pages/teachers/teachers.component';
+import { UsersComponent } from './modules/dashboard/pages/users/users.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'teachers',
         component: TeachersComponent,
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
       },
     ],
   },

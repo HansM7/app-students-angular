@@ -1,0 +1,98 @@
+{
+  "users": [
+    {
+      "fullname": "adawd dawd",
+      "email": "e@gmail.com",
+      "password": "12345",
+      "id": 4
+    }
+  ],
+  "teachers": [
+    {
+      "id": 1,
+      "fullname": "Juan Teacher",
+      "enabled": true,
+      "course": [
+        {
+          "id": 1,
+          "title": "Java",
+          "description": "Specialist in Java 2023",
+          "type": [
+            "PROGRAMMING",
+            "TECHONOLOGY"
+          ],
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "students": [
+    {
+      "id": 2,
+      "name": "sarahhh",
+      "lastname": "Johnson",
+      "email": "sarah.johnson@example.com",
+      "enabled": true,
+      "courses": [
+        {
+          "course": {
+            "id": 2,
+            "title": "React",
+            "description": "Specialist in React 2023",
+            "type": [
+              "PROGRAMMING",
+              "TECHNOLOGY"
+            ],
+            "enabled": true
+          },
+          "finished": false
+        },
+        {
+          "course": {
+            "id": 1,
+            "title": "Java",
+            "description": "Specialist in Java 2023",
+            "type": [
+              "PROGRAMMING",
+              "TECHNOLOGY"
+            ],
+            "enabled": true
+          },
+          "finished": false
+        }
+      ]
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "title": "Java",
+      "description": "Specialist in Java 2023",
+      "type": [
+        "PROGRAMMING",
+        "TECHNOLOGY"
+      ],
+      "enabled": true
+    },
+    {
+      "id": 2,
+      "title": "React",
+      "description": "Specialist in React 2023",
+      "type": [
+        "PROGRAMMING",
+        "TECHNOLOGY"
+      ],
+      "enabled": true
+    },
+    {
+      "id": 3,
+      "title": "Power BI",
+      "description": "Specialist in Power BI 2023",
+      "type": [
+        "DATA",
+        "TECHNOLOGY"
+      ],
+      "enabled": true
+    }
+  ]
+}

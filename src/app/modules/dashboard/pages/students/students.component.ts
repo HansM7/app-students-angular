@@ -9,6 +9,9 @@ import { courses } from 'src/app/data/courses';
 import { DialogDeleteComponent } from '../../components/dialogs/dialog-delete/dialog-delete.component';
 import { DialogEditComponent } from '../../components/dialogs/dialog-edit/dialog-edit.component';
 import { DialogDetailComponent } from '../../components/dialogs/dialog-detail/dialog-detail.component';
+import { UserService } from '../../services/user.service';
+import { StudentService } from '../../services/student.service';
+import { CourseService } from '../../services/course.service';
 
 @Component({
   selector: 'app-students',
@@ -16,7 +19,10 @@ import { DialogDetailComponent } from '../../components/dialogs/dialog-detail/di
   styleUrls: ['./students.component.scss'],
 })
 export class StudentsComponent {
-  dataSource: MatTableDataSource<IStudent> = new MatTableDataSource(students);
+  students: IStudent[] = [];
+  dataSource: MatTableDataSource<IStudent> = new MatTableDataSource(
+    this.students
+  );
   displayedColumns: string[] = [
     'full_name',
     'email',
@@ -26,22 +32,42 @@ export class StudentsComponent {
     'delete',
     'detail',
   ];
-  dataCourses: ICourse[] = courses;
+  dataCourses: ICourse[] | undefined;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private studentService: StudentService,
+    private courseService: CourseService
+  ) {
+    this.studentService.getStudents().subscribe((data: IStudent[]) => {
+      console.log(data);
+      this.students = data;
+      this.dataSource.data = this.students;
+    });
+    this.courseService.findCourses().subscribe((data: ICourse[]) => {
+      this.dataCourses = data;
+    });
+  }
+
+  refreshData() {
+    this.studentService.getStudents().subscribe((data: IStudent[]) => {
+      this.students = data;
+      this.dataSource.data = this.students;
+    });
+  }
 
   openDialogRegister(): void {
     const dialogRef = this.dialog.open(DialogRegisterComponent, {
       data: this.dataCourses,
     });
     dialogRef.afterClosed().subscribe(() => {
-      this.dataSource.data = students;
+      this.refreshData();
     });
   }
   openDialogDelete(id: number): void {
     const dialogRef = this.dialog.open(DialogDeleteComponent, { data: id });
     dialogRef.afterClosed().subscribe(() => {
-      this.dataSource.data = students;
+      this.refreshData();
     });
   }
   openDialogEdit(id: number) {
@@ -49,7 +75,7 @@ export class StudentsComponent {
       data: { id, courses: this.dataCourses },
     });
     dialogRef.afterClosed().subscribe(() => {
-      this.dataSource.data = students;
+      this.refreshData();
     });
   }
   openDialogDetail(id: number) {
@@ -57,7 +83,7 @@ export class StudentsComponent {
       data: { id, courses: this.dataCourses },
     });
     dialogRef.afterClosed().subscribe(() => {
-      this.dataSource.data = students;
+      this.refreshData();
     });
   }
 }

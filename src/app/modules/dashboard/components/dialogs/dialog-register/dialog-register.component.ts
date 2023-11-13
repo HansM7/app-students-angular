@@ -5,7 +5,10 @@ import { ICourse } from 'src/app/core/models/interface/course.interface';
 import { StudentService } from '../../../services/student.service';
 import { CourseService } from '../../../services/course.service';
 import { validateEmail } from '../../../utils/custom.validator';
-import { IDetailCourse } from 'src/app/core/models/interface/student.interface';
+import {
+  IDetailCourse,
+  IStudentForm,
+} from 'src/app/core/models/interface/student.interface';
 
 @Component({
   selector: 'app-dialog-register',
@@ -13,6 +16,7 @@ import { IDetailCourse } from 'src/app/core/models/interface/student.interface';
   styleUrls: ['./dialog-register.component.scss'],
 })
 export class DialogRegisterComponent {
+  courseTemporal: IDetailCourse | undefined;
   studentGroup: FormGroup;
 
   constructor(
@@ -36,30 +40,26 @@ export class DialogRegisterComponent {
 
   onSubmit(): void {
     if (this.studentGroup.valid) {
-      const name = this.studentGroup.value['name'];
-      const lastname = this.studentGroup.value['lastname'];
-      const email = this.studentGroup.value['email'];
-      const idCourse = this.studentGroup.value['course'];
-      const enabled = true;
-      const course: ICourse | undefined = this.courseService.findCourse(
-        Number(idCourse)
-      );
-      if (course) {
-        const courses: IDetailCourse[] = [
-          {
-            course,
+      const formData = this.studentGroup.getRawValue();
+
+      this.courseService
+        .findCourse(Number(formData.course))
+        .subscribe((data) => {
+          this.courseTemporal = {
+            course: data,
             finished: false,
-          },
-        ];
-        this.studentService.createStudentService({
-          name,
-          lastname,
-          email,
-          enabled,
-          courses,
+          };
         });
+
+      const newData: IStudentForm = {
+        ...formData,
+        enabled: true,
+        courses: [this.courseTemporal],
+      };
+
+      this.studentService.createStudent(newData).subscribe((data) => {
         this.dialogRef.close();
-      }
+      });
     }
   }
 }

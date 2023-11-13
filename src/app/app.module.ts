@@ -12,7 +12,7 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { DialogsDirective } from './shared/directives/dialogs.directive';
 
 @NgModule({
-  declarations: [AppComponent, UsersComponent, CoursesComponent],
+  declarations: [AppComponent, CoursesComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

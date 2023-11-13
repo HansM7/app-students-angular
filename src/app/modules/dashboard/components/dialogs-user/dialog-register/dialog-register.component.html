@@ -1,0 +1,51 @@
+<h1 mat-dialog-title>Register User</h1>
+<div mat-dialog-content>
+	<form [formGroup]="userGroup"
+		(submit)="onSubmit()"
+		style="display: flex; flex-direction: column;">
+		<mat-form-field style="min-width: 25rem;">
+			<mat-label>Full name</mat-label>
+			<input matInput
+				formControlName="fullname">
+			<mat-error>
+				{{userGroup.get('fullname')?.errors | ControlUser}}
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field style="min-width: 25rem;">
+			<mat-label>Email</mat-label>
+			<input matInput
+				formControlName="email">
+			<mat-error>
+				{{userGroup.get('email')?.errors | ControlUser}}
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field style="min-width: 25rem;">
+			<mat-label>Password</mat-label>
+			<input matInput
+				formControlName="password">
+			<mat-error>
+				{{userGroup.get('password')?.errors | ControlUser}}
+			</mat-error>
+		</mat-form-field>
+
+		<div mat-dialog-actions
+			style="display: flex;flex-direction: row; justify-content: end;">
+			<button mat-button
+				type="submit"
+				mat-raised-button
+				color="primary">
+				Register
+			</button>
+
+			<button mat-button
+				mat-raised-button
+				color="warn"
+				mat-dialog-close>
+				Close
+			</button>
+		</div>
+
+	</form>
+</div>

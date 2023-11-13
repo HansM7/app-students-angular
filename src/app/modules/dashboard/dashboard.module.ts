@@ -26,6 +26,10 @@ import { DialogRegisterComponentTeacher } from './components/dialogs-teacher/dia
 import { DialogEditComponentTeacher } from './components/dialogs-teacher/dialog-edit/dialog-edit.component';
 import { DialogDeleteComponentTeacher } from './components/dialogs-teacher/dialog-delete/dialog-delete.component';
 import { DialogDetailComponentTeacher } from './components/dialogs-teacher/dialog-detail/dialog-detail.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { UsersComponent } from './pages/users/users.component';
+import { DialogRegisterComponentUser } from './components/dialogs-user/dialog-register/dialog-register.component';
+import { DialogDeleteComponentUser } from './components/dialogs-user/dialog-delete/dialog-delete.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +47,9 @@ import { DialogDetailComponentTeacher } from './components/dialogs-teacher/dialo
     DialogEditComponentTeacher,
     DialogDeleteComponentTeacher,
     DialogDetailComponentTeacher,
+    UsersComponent,
+    DialogRegisterComponentUser,
+    DialogDeleteComponentUser,
   ],
   imports: [
     FormsModule,
@@ -57,6 +64,7 @@ import { DialogDetailComponentTeacher } from './components/dialogs-teacher/dialo
     DirectivesModule,
     MatMenuModule,
     MatAutocompleteModule,
+    HttpClientModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

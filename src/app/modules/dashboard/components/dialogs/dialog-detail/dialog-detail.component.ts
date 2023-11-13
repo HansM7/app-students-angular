@@ -13,7 +13,7 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
   styleUrls: ['./dialog-detail.component.scss'],
 })
 export class DialogDetailComponent {
-  student: IStudent;
+  student!: IStudent;
   courseCtrl = new FormControl();
   filteredCourses: ICourse[] = [];
 
@@ -25,34 +25,38 @@ export class DialogDetailComponent {
     public studentService: StudentService,
     public courseService: CourseService
   ) {
-    this.student = this.studentService.findStudent(data.id) as IStudent;
+    this.studentService.findStudent(data.id).subscribe((data) => {
+      this.student = data;
+    });
+    // this.student = this.studentService.findStudent(data.id) as IStudent;
   }
 
   remove(course: ICourse): void {
-    if (this.student.courses) {
-      const index = this.student.courses.findIndex(
-        (c) => c.course.id === course.id
-      );
-      if (index >= 0) {
-        this.student.courses.splice(index, 1);
-      }
-    }
+    // if (this.student.courses) {
+    //   const index = this.student.courses.findIndex(
+    //     (c) => c.course.id === course.id
+    //   );
+    //   if (index >= 0) {
+    //     this.student.courses.splice(index, 1);
+    //   }
+    // }
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    const selectedCourse = this.courseService.courses.find(
-      (course) => course.title == event.option.value
+    const course: ICourse = this.data.courses.find(
+      (course: ICourse) => course.title === event.option.value
     );
-
-    if (selectedCourse) {
-      this.studentService.addCourseToStudent(selectedCourse, this.student.id);
-      console.log(this.studentService.students);
-    }
+    console.log(course);
+    this.studentService
+      .addCourseToStudent(course, this.data.id)
+      .subscribe((data) => {
+        this.student.courses = data.courses;
+      });
   }
 
   public filterSugestions(event: Event): void {
     const input = (event.target as HTMLInputElement).value;
-    this.filteredCourses = this.courseService.courses.filter((course) =>
+    this.filteredCourses = this.data.courses.filter((course: ICourse) =>
       course.title.toLowerCase().includes(input.toLowerCase())
     );
     console.log(this.filteredCourses);
