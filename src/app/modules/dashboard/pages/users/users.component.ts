@@ -21,6 +21,7 @@ export class UsersComponent implements OnInit {
     'id',
     'full_name',
     'email',
+    'role',
     'password',
     'delete',
   ];

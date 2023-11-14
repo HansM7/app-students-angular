@@ -10,15 +10,19 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { DialogsDirective } from './shared/directives/dialogs.directive';
+import { AuthModule } from './modules/auth/auth.module';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
-  declarations: [AppComponent, CoursesComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
     DashboardModule,
+    AuthModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [],
   bootstrap: [AppComponent],

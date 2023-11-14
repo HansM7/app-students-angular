@@ -26,8 +26,11 @@ export class DialogRegisterComponentTeacher {
       const fullname = this.teacherGroup.value['fullname'];
 
       if (fullname) {
-        this.teacherService.createTeacher({ fullname, enabled: true });
-        this.dialogRef.close();
+        this.teacherService
+          .createTeacher({ fullname, enabled: true })
+          .subscribe((response) => {
+            this.dialogRef.close();
+          });
       }
     }
   }

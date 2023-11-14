@@ -1,5 +1,5 @@
 export enum ETypeCourse {
-    TECHONOLOGY = 'technology',
-    PROGRAMMING = 'programming',
-    DATA = 'data'
+  TECHNOLOGY = 'TECHNOLOGY',
+  PROGRAMMING = 'PROGRAMMING',
+  DATA = 'DATA',
 }

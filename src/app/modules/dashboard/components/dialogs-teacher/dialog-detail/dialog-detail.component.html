@@ -1,68 +1,70 @@
 <h1 mat-dialog-title>Detail student</h1>
 <div mat-dialog-content>
-	<div style="display: flex; flex-direction: column;">
-		<mat-form-field style="min-width: 25rem;">
-			<mat-label>Fullname</mat-label>
-			<input [disabled]="true"
-				[value]="teacher.fullname"
-				matInput>
-		</mat-form-field>
+	<div *ngIf="teacher">
+		<div style="display: flex; flex-direction: column;">
+			<mat-form-field style="min-width: 25rem;">
+				<mat-label>Fullname</mat-label>
+				<input [disabled]="true"
+					[value]="teacher.fullname"
+					matInput>
+			</mat-form-field>
 
-		<!-- Inject data -->
-		<mat-form-field style="min-width: 25rem;">
-			<mat-label>Enabled</mat-label>
-			<mat-select [(ngModel)]="teacher.enabled"
-				[disabled]="true">
-				<mat-option value="enabled">ENABLED</mat-option>
-				<mat-option value="disabled">DISABLED</mat-option>
-			</mat-select>
-		</mat-form-field>
+			<!-- Inject data -->
+			<mat-form-field style="min-width: 25rem;">
+				<mat-label>Enabled</mat-label>
+				<mat-select [(ngModel)]="teacher.enabled"
+					[disabled]="true">
+					<mat-option value="enabled">ENABLED</mat-option>
+					<mat-option value="disabled">DISABLED</mat-option>
+				</mat-select>
+			</mat-form-field>
 
-		<!-- Data courses -->
-
-		<div>
-			<h5>Courses</h5>
-			<mat-chip-listbox #chipList
-				style="margin-bottom: 2rem;">
-				<mat-chip *ngFor="let course of teacher.course"
-					[removable]="true"
-					(removed)="remove(course)">
-					{{ course.title }}
-					<mat-icon matChipRemove>cancel</mat-icon>
-				</mat-chip>
-			</mat-chip-listbox>
+			<!-- Data courses -->
 
 			<div>
-				<mat-form-field style="width: 100%;">
-					<mat-label>Description</mat-label>
-					<input [matAutocomplete]="auto"
-						[matAutocomplete]="auto"
-						(input)="filterSugestions($event)"
-						matInput
-						placeholder="Add a course">
-				</mat-form-field>
-
-				<mat-autocomplete #auto="matAutocomplete"
-					(optionSelected)="selected($event)">
-					<mat-option *ngFor="let course of filteredCourses"
-						[value]="course.title">
+				<h5>Courses</h5>
+				<mat-chip-listbox #chipList
+					style="margin-bottom: 2rem;">
+					<mat-chip *ngFor="let course of teacher.course"
+						[removable]="true"
+						(removed)="remove(course)">
 						{{ course.title }}
-					</mat-option>
-				</mat-autocomplete>
+						<mat-icon matChipRemove>cancel</mat-icon>
+					</mat-chip>
+				</mat-chip-listbox>
 
+				<div>
+					<mat-form-field style="width: 100%;">
+						<mat-label>Description</mat-label>
+						<input [matAutocomplete]="auto"
+							[matAutocomplete]="auto"
+							(input)="filterSugestions($event)"
+							matInput
+							placeholder="Add a course">
+					</mat-form-field>
+
+					<mat-autocomplete #auto="matAutocomplete"
+						(optionSelected)="selected($event)">
+						<mat-option *ngFor="let course of filteredCourses"
+							[value]="course.title">
+							{{ course.title }}
+						</mat-option>
+					</mat-autocomplete>
+
+				</div>
 			</div>
+
+			<div mat-dialog-actions
+				style="display: flex;flex-direction: row; justify-content: end;">
+
+				<button mat-button
+					mat-raised-button
+					color="warn"
+					mat-dialog-close>
+					Close
+				</button>
+			</div>
+
 		</div>
-
-		<div mat-dialog-actions
-			style="display: flex;flex-direction: row; justify-content: end;">
-
-			<button mat-button
-				mat-raised-button
-				color="warn"
-				mat-dialog-close>
-				Close
-			</button>
-		</div>
-
 	</div>
 </div>

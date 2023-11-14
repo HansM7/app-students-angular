@@ -6,12 +6,20 @@ import { HomeComponent } from './modules/dashboard/pages/home/home.component';
 import { StudentsComponent } from './modules/dashboard/pages/students/students.component';
 import { TeachersComponent } from './modules/dashboard/pages/teachers/teachers.component';
 import { UsersComponent } from './modules/dashboard/pages/users/users.component';
+import { CoursesComponent } from './modules/dashboard/pages/courses/courses.component';
+import { authGuardGuard } from './core/guards/auth-guard.guard';
+import { dashboardGuard } from './core/guards/dashboard-guard.guard';
 
 const routes: Routes = [
   {
     path: 'dashboard',
+    canActivate: [dashboardGuard],
     component: DashboardComponent,
     children: [
+      {
+        path: '',
+        component: HomeComponent,
+      },
       {
         path: 'home',
         component: HomeComponent,
@@ -28,10 +36,15 @@ const routes: Routes = [
         path: 'users',
         component: UsersComponent,
       },
+      {
+        path: 'courses',
+        component: CoursesComponent,
+      },
     ],
   },
   {
     path: 'auth',
+    canActivate: [authGuardGuard],
     component: AuthComponent,
   },
 ];

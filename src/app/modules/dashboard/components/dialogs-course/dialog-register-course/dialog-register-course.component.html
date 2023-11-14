@@ -1,44 +1,38 @@
-<h1 mat-dialog-title>Register User</h1>
+<h1 mat-dialog-title>Register teacher</h1>
 <div mat-dialog-content>
-	<form [formGroup]="userGroup"
+	<form [formGroup]="courseGroup"
 		(submit)="onSubmit()"
 		style="display: flex; flex-direction: column;">
 		<mat-form-field style="min-width: 25rem;">
-			<mat-label>Full name</mat-label>
+			<mat-label>Title</mat-label>
 			<input matInput
-				formControlName="fullname">
+				formControlName="title">
 			<mat-error>
-				{{userGroup.get('fullname')?.errors | ControlUser}}
+				{{courseGroup.get('title')?.errors | courseControl}}
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field style="min-width: 25rem;">
+			<mat-label>Description</mat-label>
+			<input matInput
+				formControlName="description">
+			<mat-error>
+				{{courseGroup.get('description')?.errors | courseControl}}
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field style="min-width: 25rem;">
+			<mat-label>URL</mat-label>
+			<input matInput
+				formControlName="url">
+			<mat-error>
+				{{courseGroup.get('url')?.errors | courseControl}}
 			</mat-error>
 		</mat-form-field>
 
-		<mat-form-field style="min-width: 25rem;">
-			<mat-label>Email</mat-label>
-			<input matInput
-				formControlName="email">
-			<mat-error>
-				{{userGroup.get('email')?.errors | ControlUser}}
-			</mat-error>
-		</mat-form-field>
-
-		<mat-form-field style="min-width: 25rem;">
-			<mat-label>Role</mat-label>
-			<mat-select formControlName="role">
-				<mat-option 
-					value="admin">
-					ADMIN
-				</mat-option>
-				<mat-option value="user">USER</mat-option>
+		<mat-form-field>
+			<mat-label>Types</mat-label>
+			<mat-select [formControl]="toppings" multiple>
+				<mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
 			</mat-select>
-		</mat-form-field>
-
-		<mat-form-field style="min-width: 25rem;">
-			<mat-label>Password</mat-label>
-			<input matInput
-				formControlName="password">
-			<mat-error>
-				{{userGroup.get('password')?.errors | ControlUser}}
-			</mat-error>
 		</mat-form-field>
 
 		<div mat-dialog-actions

@@ -5,21 +5,28 @@
       "email": "e@gmail.com",
       "password": "12345",
       "id": 4
+    },
+    {
+      "fullname": "Hans admin",
+      "email": "hans@gmail.com",
+      "role": "admin",
+      "password": "12345",
+      "id": 5
     }
   ],
   "teachers": [
     {
       "id": 1,
-      "fullname": "Juan Teacher",
-      "enabled": true,
+      "fullname": "Juan Teachers",
+      "enabled": "disabled",
       "course": [
         {
-          "id": 1,
-          "title": "Java",
-          "description": "Specialist in Java 2023",
+          "id": 2,
+          "title": "React",
+          "description": "Specialist in React 2023",
           "type": [
             "PROGRAMMING",
-            "TECHONOLOGY"
+            "TECHNOLOGY"
           ],
           "enabled": true
         }
@@ -46,19 +53,6 @@
             "enabled": true
           },
           "finished": false
-        },
-        {
-          "course": {
-            "id": 1,
-            "title": "Java",
-            "description": "Specialist in Java 2023",
-            "type": [
-              "PROGRAMMING",
-              "TECHNOLOGY"
-            ],
-            "enabled": true
-          },
-          "finished": false
         }
       ]
     }
@@ -72,7 +66,8 @@
         "PROGRAMMING",
         "TECHNOLOGY"
       ],
-      "enabled": true
+      "enabled": true,
+      "url": "https://static-00.iconduck.com/assets.00/java-icon-2048x2048-yxty4s2p.png"
     },
     {
       "id": 2,
@@ -82,7 +77,8 @@
         "PROGRAMMING",
         "TECHNOLOGY"
       ],
-      "enabled": true
+      "enabled": true,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"
     },
     {
       "id": 3,
@@ -92,7 +88,19 @@
         "DATA",
         "TECHNOLOGY"
       ],
-      "enabled": true
+      "enabled": true,
+      "url": "https://static-00.iconduck.com/assets.00/power-bi-icon-1536x2048-0xah5g2o.png"
+    },
+    {
+      "title": "GO",
+      "description": "course go",
+      "url": "https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_go_gopher_icon_130571.png",
+      "type": [
+        "PROGRAMMING",
+        "TECHNOLOGY"
+      ],
+      "enabled": true,
+      "id": 4
     }
   ]
 }

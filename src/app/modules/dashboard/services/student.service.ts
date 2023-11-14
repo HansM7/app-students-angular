@@ -112,28 +112,24 @@ export class StudentService {
   // }
 
   deleteCourseStudent(id_student: number, id_course: number): Observable<any> {
-    this.http.get<IStudent>(this.url + '/students/' + id_student).pipe(
-      map((response) => {
+    return this.http.get<IStudent>(this.url + '/students/' + id_student).pipe(
+      switchMap((response) => {
         this.studentTemporal = response;
+
+        // Filtra los cursos, excluyendo el que se desea eliminar
+        const courses = this.studentTemporal.courses.filter(
+          (course: IDetailCourse) => course.course.id !== id_course
+        );
+
+        console.log(this.studentTemporal);
+        console.log(id_course);
+        console.log(courses);
+
+        // Realiza la solicitud PATCH con los cursos filtrados
+        return this.http.patch<any>(this.url + '/students/' + id_student, {
+          courses: courses,
+        });
       })
     );
-
-    const courses =
-      this.studentTemporal?.courses?.filter(
-        (course) => course.course.id !== id_course
-      ) ?? [];
-
-    return this.http.patch<any>(this.url + '/students/' + id_student, {
-      courses: [...(this.studentTemporal?.courses ?? []), courses],
-    });
-    // const student = this.students.find((student) => student.id === id_student);
-    // if (student && student.courses) {
-    //   const courseIndex = student.courses.findIndex(
-    //     (course) => course.course.id === id_course
-    //   );
-    //   if (courseIndex !== -1) {
-    //     student.courses.splice(courseIndex, 1);
-    //   }
-    // }
   }
 }

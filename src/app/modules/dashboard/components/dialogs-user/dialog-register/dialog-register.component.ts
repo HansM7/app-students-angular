@@ -19,6 +19,7 @@ export class DialogRegisterComponentUser implements OnInit {
     this.userGroup = this.formBuilder.group({
       fullname: ['', [Validators.required]],
       email: ['', [Validators.required]],
+      role: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
   }

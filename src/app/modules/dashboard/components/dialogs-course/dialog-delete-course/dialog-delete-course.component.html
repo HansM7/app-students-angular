@@ -1,20 +1,20 @@
-<h1 mat-dialog-title>Delete student</h1>
+<h1 mat-dialog-title>Delete Course</h1>
 <div mat-dialog-content>
 
-	<div *ngIf="teacher">
+	<div *ngIf="course">
 
 		<div style="margin-bottom: 2rem;">
 			Are you sure to eliminate
 			<span [delete]="'delete'"
 				appDialogs>
-				{{teacher.fullname}}
+				{{course.title}}
 			</span>
 			?
 		</div>
 
 		<div mat-dialog-actions
 			style="display: flex;flex-direction: row; justify-content: end;">
-			<button (click)="deleteTeacher()"
+			<button (click)="onDelete(course.id)"
 				mat-button
 				type="submit"
 				mat-raised-button

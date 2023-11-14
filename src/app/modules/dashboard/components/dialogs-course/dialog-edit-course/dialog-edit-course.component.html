@@ -1,0 +1,82 @@
+<h1 mat-dialog-title>Edit course</h1>
+<div mat-dialog-content>
+	<form [formGroup]="courseGroup"
+		(submit)="onSubmit()"
+		style="display: flex; flex-direction: column;">
+		<mat-form-field style="min-width: 25rem;">
+			<mat-label>Title</mat-label>
+			<input matInput
+				formControlName="title">
+			<mat-error>
+				{{courseGroup.get('title')?.errors | courseControl}}
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field style="min-width: 25rem;">
+			<mat-label>Description</mat-label>
+			<input matInput
+				formControlName="description">
+			<mat-error>
+				{{courseGroup.get('description')?.errors | courseControl}}
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field style="min-width: 25rem;">
+			<mat-label>URL</mat-label>
+			<input matInput
+				formControlName="url">
+			<mat-error>
+				{{courseGroup.get('url')?.errors | courseControl}}
+			</mat-error>
+		</mat-form-field>
+
+		<!-- <mat-select formControlName="type" multiple>
+      <mat-option *ngFor="let topping of toppingList" [value]="topping" [selected]="course.type.includes(topping)">{{topping}}</mat-option>
+    </mat-select> -->
+
+      <!-- <mat-form-field style="min-width: 25rem;">
+        <mat-label>Enabled</mat-label>
+        <mat-select formControlName="enabled">
+          <mat-option value="0" [attr.selected]="course.enabled === false">ENABLED</mat-option>
+          <mat-option value="1" [attr.selected]="course.enabled === true">DISABLED</mat-option>
+        </mat-select>
+      </mat-form-field> -->
+
+      <mat-form-field style="min-width: 25rem;">
+        <mat-label>Enabled</mat-label>
+        <mat-select formControlName="enabled">
+          <mat-option value="0">ENABLED</mat-option>
+          <mat-option value="1">DISABLED</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+
+    <mat-form-field>
+			<mat-label>Types</mat-label>
+    <mat-select formControlName="type" multiple>
+      
+      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+     </mat-select>
+    </mat-form-field>
+    <!-- <mat-select formControlName="type" multiple>
+      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+    </mat-select>
+     -->
+
+		<div mat-dialog-actions
+			style="display: flex;flex-direction: row; justify-content: end;">
+			<button mat-button
+				type="submit"
+				mat-raised-button
+				color="primary">
+				Save
+			</button>
+
+			<button mat-button
+				mat-raised-button
+				color="warn"
+				mat-dialog-close>
+				Close
+			</button>
+		</div>
+
+	</form>
+</div>

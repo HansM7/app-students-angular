@@ -5,6 +5,7 @@ export interface ICourseForm {
   title: string;
   description: string;
   type: ETypeCourse[];
+  url?: string;
   enabled: boolean;
 }
 

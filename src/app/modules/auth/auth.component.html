@@ -1,3 +1,19 @@
-<p>
-  auth works!
-</p>
+<div style=" min-height: 100vh; padding-inline: 12rem; padding-top: 5rem; background-color: rgb(41, 101, 192);">
+  <div style="display: flex;  padding: 2rem; border-radius: 1rem; background-color: white;">
+
+    <form (submit)="onSubmit()" [formGroup]="loginGroup" class="example-form" style=" width: 100%!important; display: flex; flex-direction: column;">
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput placeholder="Email" value="">
+      </mat-form-field>
+    
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input formControlName="password" type="password" matInput placeholder="Password" value="">
+      </mat-form-field>
+
+      <button type="submit" style="margin-top: 2rem;" mat-flat-button color="primary">Login</button>
+
+    </form>
+  </div>
+</div>

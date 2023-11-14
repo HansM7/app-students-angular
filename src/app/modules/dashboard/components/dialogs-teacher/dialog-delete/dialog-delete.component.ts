@@ -9,21 +9,23 @@ import { TeacherService } from '../../../services/teacher.service';
   styleUrls: ['./dialog-delete.component.scss'],
 })
 export class DialogDeleteComponentTeacher {
-  teacher: ITeacher | undefined;
+  teacher!: ITeacher;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<DialogDeleteComponentTeacher>,
     public teacherService: TeacherService
   ) {
-    this.teacher = teacherService.findById(data.id);
-    console.log(this.teacher);
+    teacherService.findById(data.id).subscribe((response) => {
+      this.teacher = response;
+    });
   }
 
   deleteTeacher(): void {
-    if (this.teacher) {
-      this.teacherService.deleteTeacher(this.teacher?.id); //otro modo sería this.student = studentService.findStudent(id) as IStudent;
-      this.dialogRef.close();
-    }
+    this.teacherService
+      .deleteTeacher(this.teacher?.id)
+      .subscribe((response) => {
+        this.dialogRef.close();
+      }); //otro modo sería this.student = studentService.findStudent(id) as IStudent;
   }
 }

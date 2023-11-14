@@ -28,18 +28,14 @@ export class DialogDetailComponent {
     this.studentService.findStudent(data.id).subscribe((data) => {
       this.student = data;
     });
-    // this.student = this.studentService.findStudent(data.id) as IStudent;
   }
 
   remove(course: ICourse): void {
-    // if (this.student.courses) {
-    //   const index = this.student.courses.findIndex(
-    //     (c) => c.course.id === course.id
-    //   );
-    //   if (index >= 0) {
-    //     this.student.courses.splice(index, 1);
-    //   }
-    // }
+    this.studentService
+      .deleteCourseStudent(this.student.id, course.id)
+      .subscribe((data) => {
+        this.student = data;
+      });
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {

@@ -50,6 +50,17 @@
 					{{element.email}}
 				</td>
 			</ng-container>
+
+			<ng-container matColumnDef="role">
+				<th *matHeaderCellDef
+					mat-header-cell>
+					Role
+				</th>
+				<td *matCellDef="let element"
+					mat-cell>
+					{{element.role}}
+				</td>
+			</ng-container>
 			<ng-container matColumnDef="password">
 				<th *matHeaderCellDef
 					mat-header-cell>

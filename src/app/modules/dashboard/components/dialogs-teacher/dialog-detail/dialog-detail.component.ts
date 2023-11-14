@@ -13,9 +13,10 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
   styleUrls: ['./dialog-detail.component.scss'],
 })
 export class DialogDetailComponentTeacher {
-  teacher: ITeacher;
+  teacher!: ITeacher;
   courseCtrl = new FormControl();
   filteredCourses: ICourse[] = [];
+  courses!: ICourse[];
 
   @ViewChild('courseInput') courseInput: any;
 
@@ -25,33 +26,39 @@ export class DialogDetailComponentTeacher {
     public teacherService: TeacherService,
     public courseService: CourseService
   ) {
-    this.teacher = this.teacherService.findById(data.id) as ITeacher;
+    this.teacherService.findById(data.id).subscribe((response) => {
+      this.teacher = response;
+    });
+    this.courseService.findCourses().subscribe((response) => {
+      this.courses = response;
+    });
   }
 
   remove(course: ICourse): void {
-    if (this.teacher.course) {
-      const index = this.teacher.course.findIndex((c) => c.id === course.id);
-      if (index >= 0) {
-        this.teacher.course.splice(index, 1);
-      }
-    }
+    this.teacherService.removeCourse(course.id).subscribe((response) => {
+      this.teacher = response;
+    });
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    // const selectedCourse = this.courseService.courses.find(
-    //   (course) => course.title == event.option.value
-    // );
-    // if (selectedCourse) {
-    //   this.teacherService.asignedCourse(this.teacher.id, selectedCourse);
-    //   // console.log(this.teacherService.students);
-    // }
+    const course: ICourse | undefined = this.courses.find(
+      (item: ICourse) => item.title === event.option.value
+    );
+
+    if (course) {
+      this.teacherService
+        .asignedCourse(this.teacher.id, course)
+        .subscribe((response) => {
+          this.teacher.course = response.course;
+        });
+    }
   }
 
   public filterSugestions(event: Event): void {
-    // const input = (event.target as HTMLInputElement).value;
-    // this.filteredCourses = this.courseService.courses.filter((course) =>
-    //   course.title.toLowerCase().includes(input.toLowerCase())
-    // );
-    // console.log(this.filteredCourses);
+    const input = (event.target as HTMLInputElement).value;
+    this.filteredCourses = this.data.courses.filter((course: ICourse) =>
+      course.title.toLowerCase().includes(input.toLowerCase())
+    );
+    console.log(this.filteredCourses);
   }
 }

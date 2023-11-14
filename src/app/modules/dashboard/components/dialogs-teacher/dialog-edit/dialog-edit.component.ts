@@ -12,7 +12,7 @@ import { TeacherService } from '../../../services/teacher.service';
 export class DialogEditComponentTeacher {
   teacherGroup: FormGroup;
 
-  teacher: ITeacher | undefined;
+  teacher!: ITeacher;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -20,8 +20,6 @@ export class DialogEditComponentTeacher {
     private dialogRef: MatDialogRef<DialogEditComponentTeacher>,
     public teacherService: TeacherService
   ) {
-    this.teacher = teacherService.findById(data.id);
-
     this.teacherGroup = this.formBuilder.group({
       fullname: [
         this.teacher?.fullname,
@@ -29,6 +27,15 @@ export class DialogEditComponentTeacher {
       ],
 
       enabled: [this.teacher?.enabled],
+    });
+
+    teacherService.findById(data.id).subscribe((response) => {
+      this.teacher = response;
+      this.teacherGroup.patchValue({
+        fullname: this.teacher.fullname,
+
+        enabled: this.teacher.enabled,
+      });
     });
   }
 
@@ -40,11 +47,14 @@ export class DialogEditComponentTeacher {
     if (this.teacherGroup.valid) {
       const fullname = this.teacherGroup.value['fullname'];
       const enabled = this.teacherGroup.value['enabled'];
-      this.teacherService.editTeacher(this.teacher?.id as Number, {
-        fullname,
-        enabled,
-      });
-      this.dialogRef.close();
+      this.teacherService
+        .editTeacher(this.teacher?.id as number, {
+          fullname,
+          enabled,
+        })
+        .subscribe((response) => {
+          this.dialogRef.close();
+        });
     }
   }
 }
