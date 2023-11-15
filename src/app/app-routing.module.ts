@@ -14,33 +14,37 @@ const routes: Routes = [
   {
     path: 'dashboard',
     canActivate: [dashboardGuard],
-    component: DashboardComponent,
-    children: [
-      {
-        path: '',
-        component: HomeComponent,
-      },
-      {
-        path: 'home',
-        component: HomeComponent,
-      },
-      {
-        path: 'students',
-        component: StudentsComponent,
-      },
-      {
-        path: 'teachers',
-        component: TeachersComponent,
-      },
-      {
-        path: 'users',
-        component: UsersComponent,
-      },
-      {
-        path: 'courses',
-        component: CoursesComponent,
-      },
-    ],
+    loadChildren: () =>
+      import('./modules/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
+    // component: DashboardComponent,
+    // children: [
+    //   {
+    //     path: '',
+    //     component: HomeComponent,
+    //   },
+    //   {
+    //     path: 'home',
+    //     component: HomeComponent,
+    //   },
+    //   {
+    //     path: 'students',
+    //     component: StudentsComponent,
+    //   },
+    //   {
+    //     path: 'teachers',
+    //     component: TeachersComponent,
+    //   },
+    //   {
+    //     path: 'users',
+    //     component: UsersComponent,
+    //   },
+    //   {
+    //     path: 'courses',
+    //     component: CoursesComponent,
+    //   },
+    // ],
   },
   {
     path: 'auth',

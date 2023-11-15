@@ -1,12 +1,6 @@
 {
   "users": [
     {
-      "fullname": "adawd dawd",
-      "email": "e@gmail.com",
-      "password": "12345",
-      "id": 4
-    },
-    {
       "fullname": "Hans admin",
       "email": "hans@gmail.com",
       "role": "admin",
@@ -43,6 +37,20 @@
       "courses": [
         {
           "course": {
+            "id": 1,
+            "title": "Java",
+            "description": "Specialist in Java 2023",
+            "type": [
+              "PROGRAMMING",
+              "TECHNOLOGY"
+            ],
+            "enabled": true,
+            "url": "https://static-00.iconduck.com/assets.00/java-icon-2048x2048-yxty4s2p.png"
+          },
+          "finished": false
+        },
+        {
+          "course": {
             "id": 2,
             "title": "React",
             "description": "Specialist in React 2023",
@@ -50,7 +58,8 @@
               "PROGRAMMING",
               "TECHNOLOGY"
             ],
-            "enabled": true
+            "enabled": true,
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"
           },
           "finished": false
         }

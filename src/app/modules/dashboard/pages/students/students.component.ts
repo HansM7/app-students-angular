@@ -31,6 +31,7 @@ export class StudentsComponent {
     'edit',
     'delete',
     'detail',
+    'profile',
   ];
   dataCourses: ICourse[] | undefined;
 

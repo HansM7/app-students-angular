@@ -36,6 +36,8 @@ import { DialogEditCourseComponent } from './components/dialogs-course/dialog-ed
 import { DialogDeleteCourseComponent } from './components/dialogs-course/dialog-delete-course/dialog-delete-course.component';
 import { userReducer } from 'src/app/core/store/user.reduce';
 import { StoreModule } from '@ngrx/store';
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,7 @@ import { StoreModule } from '@ngrx/store';
     DialogRegisterCourseComponent,
     DialogEditCourseComponent,
     DialogDeleteCourseComponent,
+    ProfileComponent,
   ],
   imports: [
     FormsModule,
@@ -75,7 +78,8 @@ import { StoreModule } from '@ngrx/store';
     MatMenuModule,
     MatAutocompleteModule,
     HttpClientModule,
-    StoreModule.forRoot({ user: userReducer }),
+    DashboardRoutingModule,
+    // StoreModule.forRoot({ user: userReducer }),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

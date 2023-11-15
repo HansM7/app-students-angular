@@ -116,6 +116,19 @@
 				</td>
 			</ng-container>
 
+			<ng-container matColumnDef="profile">
+				<th *matHeaderCellDef
+					mat-header-cell>
+					Profile
+				</th>
+				<td *matCellDef="let element"
+					mat-cell>
+					<a href="" routerLink="{{element.id}}" >
+						<mat-icon>link</mat-icon>
+					</a>
+				</td>
+			</ng-container>
+
 			<tbody>
 				<tr *matHeaderRowDef="displayedColumns"
 					mat-header-row></tr>
