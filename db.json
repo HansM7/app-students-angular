@@ -6,6 +6,13 @@
       "role": "admin",
       "password": "12345",
       "id": 5
+    },
+    {
+      "fullname": "Jorge Medina",
+      "email": "jorge@gmail.com",
+      "role": "user",
+      "password": "12345",
+      "id": 6
     }
   ],
   "teachers": [
@@ -64,6 +71,30 @@
           "finished": false
         }
       ]
+    },
+    {
+      "name": "Example",
+      "lastname": "Example lastanem",
+      "email": "a@gmail.com",
+      "course": "1",
+      "enabled": true,
+      "courses": [
+        {
+          "course": {
+            "id": 1,
+            "title": "Java",
+            "description": "Specialist in Java 2023",
+            "type": [
+              "PROGRAMMING",
+              "TECHNOLOGY"
+            ],
+            "enabled": true,
+            "url": "https://static-00.iconduck.com/assets.00/java-icon-2048x2048-yxty4s2p.png"
+          },
+          "finished": false
+        }
+      ],
+      "id": 3
     }
   ],
   "courses": [

@@ -42,7 +42,6 @@ export class DialogDetailComponent {
     const course: ICourse = this.data.courses.find(
       (course: ICourse) => course.title === event.option.value
     );
-    console.log(course);
     this.studentService
       .addCourseToStudent(course, this.data.id)
       .subscribe((data) => {
@@ -55,6 +54,5 @@ export class DialogDetailComponent {
     this.filteredCourses = this.data.courses.filter((course: ICourse) =>
       course.title.toLowerCase().includes(input.toLowerCase())
     );
-    console.log(this.filteredCourses);
   }
 }

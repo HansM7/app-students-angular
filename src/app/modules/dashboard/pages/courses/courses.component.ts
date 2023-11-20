@@ -54,7 +54,6 @@ export class CoursesComponent implements OnInit {
     });
   }
   openDialogEdit(course: ICourse) {
-    console.log(course);
     const dialogRef = this.matDialog.open(DialogEditCourseComponent, {
       data: course,
     });

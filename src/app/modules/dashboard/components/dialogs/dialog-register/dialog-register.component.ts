@@ -49,17 +49,17 @@ export class DialogRegisterComponent {
             course: data,
             finished: false,
           };
+
+          const newData: IStudentForm = {
+            ...formData,
+            enabled: true,
+            courses: [this.courseTemporal],
+          };
+
+          this.studentService.createStudent(newData).subscribe((data) => {
+            this.dialogRef.close();
+          });
         });
-
-      const newData: IStudentForm = {
-        ...formData,
-        enabled: true,
-        courses: [this.courseTemporal],
-      };
-
-      this.studentService.createStudent(newData).subscribe((data) => {
-        this.dialogRef.close();
-      });
     }
   }
 }

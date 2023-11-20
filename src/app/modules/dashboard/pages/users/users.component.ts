@@ -28,7 +28,6 @@ export class UsersComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private userService: UserService) {
     this.userService.getUsers().subscribe((data: IUser[]) => {
-      console.log(data);
       this.dataUsers = data;
       this.dataSource.data = this.dataUsers;
     });

@@ -19,6 +19,7 @@ import { CourseService } from '../../services/course.service';
   styleUrls: ['./students.component.scss'],
 })
 export class StudentsComponent {
+  user!: any;
   students: IStudent[] = [];
   dataSource: MatTableDataSource<IStudent> = new MatTableDataSource(
     this.students
@@ -38,16 +39,17 @@ export class StudentsComponent {
   constructor(
     public dialog: MatDialog,
     private studentService: StudentService,
-    private courseService: CourseService
+    private courseService: CourseService,
+    private userService: UserService
   ) {
     this.studentService.getStudents().subscribe((data: IStudent[]) => {
-      console.log(data);
       this.students = data;
       this.dataSource.data = this.students;
     });
     this.courseService.findCourses().subscribe((data: ICourse[]) => {
       this.dataCourses = data;
     });
+    this.user = this.userService.captureUser();
   }
 
   refreshData() {

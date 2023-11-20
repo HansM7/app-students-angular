@@ -1,140 +1,132 @@
 <app-template>
-	<div style="width: 100%; height: 100; margin-top:3rem; padding-inline: 1rem; margin-bottom: 3rem;">
-		<mat-card>
-			<mat-card-content>
-				<div style="display: flex; justify-content: space-between;">
-					<span style="display: flex; align-items: center; font-size: 1.25rem; font-weight: 600;">List students</span>
-					<div>
-						<button (click)="openDialogRegister()"
-							mat-raised-button
-							color="primary">
-							Add student
-						</button>
-					</div>
-				</div>
-			</mat-card-content>
-		</mat-card>
+  <div
+    style="
+      width: 100%;
+      height: 100;
+      margin-top: 3rem;
+      padding-inline: 1rem;
+      margin-bottom: 3rem;
+    "
+  >
+    <mat-card>
+      <mat-card-content>
+        <div style="display: flex; justify-content: space-between">
+          <span
+            style="
+              display: flex;
+              align-items: center;
+              font-size: 1.25rem;
+              font-weight: 600;
+            "
+            >List students</span
+          >
+          <div>
+            <button
+              (click)="openDialogRegister()"
+              mat-raised-button
+              color="primary"
+            >
+              Add student
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
 
-		<table [dataSource]="dataSource"
-			style="margin-top: 2rem; "
-			mat-table
-			class="mat-elevation-z8">
+    <table
+      [dataSource]="dataSource"
+      style="margin-top: 2rem"
+      mat-table
+      class="mat-elevation-z8"
+    >
+      <ng-container matColumnDef="full_name">
+        <th *matHeaderCellDef mat-header-cell>Full name</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.name + " " + element.lastname | uppercase }}
+        </td>
+      </ng-container>
 
-			<ng-container matColumnDef="full_name">
-				<th *matHeaderCellDef
-					mat-header-cell>
-					Full name
-				</th>
-				<td *matCellDef="let element"
-					mat-cell>
-					{{element.name +' '+ element.lastname | uppercase}}
-				</td>
-			</ng-container>
+      <!-- Weight Column -->
+      <ng-container matColumnDef="email">
+        <th *matHeaderCellDef mat-header-cell>Email</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.email }}
+        </td>
+      </ng-container>
 
-			<!-- Weight Column -->
-			<ng-container matColumnDef="email">
-				<th *matHeaderCellDef
-					mat-header-cell>
-					Email
-				</th>
-				<td *matCellDef="let element"
-					mat-cell>
-					{{element.email}}
-				</td>
-			</ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="enabled">
+        <th *matHeaderCellDef mat-header-cell>Enabled</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.enabled }}
+        </td>
+      </ng-container>
 
-			<!-- Symbol Column -->
-			<ng-container matColumnDef="enabled">
-				<th *matHeaderCellDef
-					mat-header-cell>
-					Enabled
-				</th>
-				<td *matCellDef="let element"
-					mat-cell>
-					{{element.enabled}}
-				</td>
-			</ng-container>
+      <ng-container matColumnDef="courses">
+        <th *matHeaderCellDef mat-header-cell>Courses</th>
+        <td *matCellDef="let element" mat-cell>
+          {{ element.courses.length | number }}
+        </td>
+      </ng-container>
 
-			<ng-container matColumnDef="courses">
-				<th *matHeaderCellDef
-					mat-header-cell>
-					Courses
-				</th>
-				<td *matCellDef="let element"
-					mat-cell>
-					{{element.courses.length | number}}
-				</td>
-			</ng-container>
-
-			<ng-container matColumnDef="edit">
-				<th *matHeaderCellDef
-					mat-header-cell>
-					Edit
-				</th>
-				<td *matCellDef="let element"
-					mat-cell>
-					<button (click)="openDialogEdit(element.id)"
-						mat-mini-fab
-						color="primary">
-						<mat-icon>edit</mat-icon>
-					</button>
-					<!-- <button (click)="openDialogEdit(element.id)"
+      <ng-container matColumnDef="edit">
+        <th *matHeaderCellDef mat-header-cell>Edit</th>
+        <td *matCellDef="let element" mat-cell>
+          <button
+            (click)="openDialogEdit(element.id)"
+            mat-mini-fab
+            color="primary"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <!-- <button (click)="openDialogEdit(element.id)"
 						mat-raised-button
 						color="accent">
 						<mat-icon>edit</mat-icon>
 					</button> -->
-				</td>
-			</ng-container>
+        </td>
+      </ng-container>
 
-			<ng-container matColumnDef="delete">
-				<th *matHeaderCellDef
-					mat-header-cell>
-					Delete
-				</th>
-				<td *matCellDef="let element"
-					mat-cell>
-					<button (click)="openDialogDelete(element.id)"
-						mat-mini-fab
-						color="warn">
-						<mat-icon>delete</mat-icon>
-					</button>
-				</td>
-			</ng-container>
+      <ng-container matColumnDef="delete">
+        <th *matHeaderCellDef mat-header-cell>Delete</th>
+        <td *matCellDef="let element" mat-cell>
+          <button
+            [disabled]="user.role === 'user'"
+            (click)="openDialogDelete(element.id)"
+            mat-mini-fab
+            color="warn"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
 
-			<ng-container matColumnDef="detail">
-				<th *matHeaderCellDef
-					mat-header-cell>
-					Detail
-				</th>
-				<td *matCellDef="let element"
-					mat-cell>
-					<button (click)="openDialogDetail(element.id)"
-						mat-mini-fab
-						color="primary">
-						<mat-icon>menu</mat-icon>
-					</button>
-				</td>
-			</ng-container>
+      <ng-container matColumnDef="detail">
+        <th *matHeaderCellDef mat-header-cell>Detail</th>
+        <td *matCellDef="let element" mat-cell>
+          <button
+            (click)="openDialogDetail(element.id)"
+            mat-mini-fab
+            color="primary"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+        </td>
+      </ng-container>
 
-			<ng-container matColumnDef="profile">
-				<th *matHeaderCellDef
-					mat-header-cell>
-					Profile
-				</th>
-				<td *matCellDef="let element"
-					mat-cell>
-					<a href="" routerLink="{{element.id}}" >
-						<mat-icon>link</mat-icon>
-					</a>
-				</td>
-			</ng-container>
+      <ng-container matColumnDef="profile">
+        <th *matHeaderCellDef mat-header-cell>Profile</th>
+        <td *matCellDef="let element" mat-cell>
+          <a href="" routerLink="{{ element.id }}">
+            <mat-icon>link</mat-icon>
+          </a>
+        </td>
+      </ng-container>
 
-			<tbody>
-				<tr *matHeaderRowDef="displayedColumns"
-					mat-header-row></tr>
-				<tr *matRowDef="let row; columns: displayedColumns;"
-					mat-row></tr>
-			</tbody>
-		</table>
-	</div>
+      <tbody>
+        <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+        <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+      </tbody>
+    </table>
+  </div>
 </app-template>

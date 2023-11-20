@@ -6,6 +6,7 @@ import { UsersComponent } from './pages/users/users.component';
 import { CoursesComponent } from './pages/courses/courses.component';
 import { NgModule } from '@angular/core';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { DetailsComponent } from './pages/details/details.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: 'courses',
     component: CoursesComponent,
+  },
+  {
+    path: 'details',
+    component: DetailsComponent,
   },
 ];
 

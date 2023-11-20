@@ -20,12 +20,10 @@ export class StudentService {
   studentTemporal!: IStudent;
 
   constructor(public courseService: CourseService, private http: HttpClient) {
-    console.log('here!');
     this.http
       .get(api_url + '/courses')
       .pipe(
         map((data) => {
-          console.log(data);
           return data; // Devuelve los datos recibidos
         })
       )
@@ -80,8 +78,6 @@ export class StudentService {
   addCourseToStudent(course: ICourse, id: number): Observable<any> {
     return this.http.get<IStudent>(this.url + '/students/' + id).pipe(
       switchMap((response: IStudent) => {
-        // console.log(response);
-
         // Actualizar el array de cursos en el objeto temporal
 
         const newData: IDetailCourse = {
@@ -120,10 +116,6 @@ export class StudentService {
         const courses = this.studentTemporal.courses.filter(
           (course: IDetailCourse) => course.course.id !== id_course
         );
-
-        console.log(this.studentTemporal);
-        console.log(id_course);
-        console.log(courses);
 
         // Realiza la solicitud PATCH con los cursos filtrados
         return this.http.patch<any>(this.url + '/students/' + id_student, {

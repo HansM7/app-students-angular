@@ -46,7 +46,6 @@ export class DialogEditComponent {
     });
 
     this.studentService.findStudent(this.data.id).subscribe((student) => {
-      console.log(student);
       this.student = student;
       this.studentGroup.patchValue({
         name: this.student?.name,
@@ -63,7 +62,6 @@ export class DialogEditComponent {
 
   onSubmit(): void {
     const formData = this.studentGroup.getRawValue();
-    console.log(formData);
 
     this.studentService
       .updateStudentService(this.data.id, formData)

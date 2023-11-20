@@ -9,8 +9,13 @@ import { UsersComponent } from './modules/dashboard/pages/users/users.component'
 import { CoursesComponent } from './modules/dashboard/pages/courses/courses.component';
 import { authGuardGuard } from './core/guards/auth-guard.guard';
 import { dashboardGuard } from './core/guards/dashboard-guard.guard';
+import { RandomComponent } from './components/random/random.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: RandomComponent,
+  },
   {
     path: 'dashboard',
     canActivate: [dashboardGuard],
@@ -18,33 +23,6 @@ const routes: Routes = [
       import('./modules/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
-    // component: DashboardComponent,
-    // children: [
-    //   {
-    //     path: '',
-    //     component: HomeComponent,
-    //   },
-    //   {
-    //     path: 'home',
-    //     component: HomeComponent,
-    //   },
-    //   {
-    //     path: 'students',
-    //     component: StudentsComponent,
-    //   },
-    //   {
-    //     path: 'teachers',
-    //     component: TeachersComponent,
-    //   },
-    //   {
-    //     path: 'users',
-    //     component: UsersComponent,
-    //   },
-    //   {
-    //     path: 'courses',
-    //     component: CoursesComponent,
-    //   },
-    // ],
   },
   {
     path: 'auth',

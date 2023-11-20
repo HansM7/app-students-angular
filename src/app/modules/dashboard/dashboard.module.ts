@@ -17,10 +17,7 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogDetailComponent } from './components/dialogs/dialog-detail/dialog-detail.component';
 import { DirectivesModule } from 'src/app/shared/directives/directives.module';
-import {
-  MatAutocompleteSelectedEvent,
-  MatAutocompleteModule,
-} from '@angular/material/autocomplete';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { TeachersComponent } from './pages/teachers/teachers.component';
 import { DialogRegisterComponentTeacher } from './components/dialogs-teacher/dialog-register/dialog-register.component';
 import { DialogEditComponentTeacher } from './components/dialogs-teacher/dialog-edit/dialog-edit.component';
@@ -38,6 +35,9 @@ import { userReducer } from 'src/app/core/store/user.reduce';
 import { StoreModule } from '@ngrx/store';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ProfileComponent } from './pages/profile/profile.component';
+
+import { NgChartsModule } from 'ng2-charts';
+import { DetailsComponent } from './pages/details/details.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +63,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     DialogEditCourseComponent,
     DialogDeleteCourseComponent,
     ProfileComponent,
+    DetailsComponent,
   ],
   imports: [
     FormsModule,
@@ -79,6 +80,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     MatAutocompleteModule,
     HttpClientModule,
     DashboardRoutingModule,
+    NgChartsModule,
     // StoreModule.forRoot({ user: userReducer }),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

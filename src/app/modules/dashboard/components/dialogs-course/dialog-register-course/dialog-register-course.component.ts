@@ -35,12 +35,10 @@ export class DialogRegisterCourseComponent implements OnInit {
   onSubmit() {
     if (this.courseGroup.valid) {
       const data = this.courseGroup.getRawValue();
-      console.log(this.toppings);
       this.courseService
         .creatCourseService({ ...data, enabled: true })
         .subscribe((response) => {
           this.dialogRef.close();
-          // console.log(response
         });
     }
   }

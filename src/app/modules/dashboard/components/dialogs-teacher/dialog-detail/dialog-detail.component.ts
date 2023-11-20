@@ -59,6 +59,5 @@ export class DialogDetailComponentTeacher {
     this.filteredCourses = this.data.courses.filter((course: ICourse) =>
       course.title.toLowerCase().includes(input.toLowerCase())
     );
-    console.log(this.filteredCourses);
   }
 }

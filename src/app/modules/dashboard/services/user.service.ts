@@ -56,4 +56,10 @@ export class UserService {
       })
     );
   }
+
+  captureUser(): void {
+    const response: string = window.localStorage.getItem('user') as string;
+    const user = JSON.parse(response);
+    return user;
+  }
 }
