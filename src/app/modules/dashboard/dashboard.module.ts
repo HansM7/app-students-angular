@@ -31,7 +31,6 @@ import { CoursesComponent } from './pages/courses/courses.component';
 import { DialogRegisterCourseComponent } from './components/dialogs-course/dialog-register-course/dialog-register-course.component';
 import { DialogEditCourseComponent } from './components/dialogs-course/dialog-edit-course/dialog-edit-course.component';
 import { DialogDeleteCourseComponent } from './components/dialogs-course/dialog-delete-course/dialog-delete-course.component';
-import { userReducer } from 'src/app/core/store/user.reduce';
 import { StoreModule } from '@ngrx/store';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { ProfileComponent } from './pages/profile/profile.component';
@@ -81,7 +80,6 @@ import { DetailsComponent } from './pages/details/details.component';
     HttpClientModule,
     DashboardRoutingModule,
     NgChartsModule,
-    // StoreModule.forRoot({ user: userReducer }),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

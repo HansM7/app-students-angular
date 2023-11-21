@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserService } from '../../../services/user.service';
+import { Store } from '@ngrx/store';
+import { AlertActions } from 'src/app/core/store/alert/alert.actions';
+import { selectAlertState } from 'src/app/core/store/alert/alert.selector';
 
 @Component({
   selector: 'app-dialog-register',
@@ -29,7 +32,6 @@ export class DialogRegisterComponentUser implements OnInit {
   onSubmit(): void {
     if (this.userGroup.valid) {
       const formData = this.userGroup.getRawValue();
-
       this.userService.registerUser(formData).subscribe((data) => {});
       this.dialogRef.close();
     }

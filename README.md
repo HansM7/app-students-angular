@@ -1,27 +1,166 @@
-# AppStudentsAngular
+# Aplicacion Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
+Temas puntuales 🚀.
 
-## Development server
+## Como usarlo?
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Es super fácil 😎
 
-## Code scaffolding
+Solo deberás instalar las dependencias indicadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+  npm install
+```
 
-## Build
+## Recomendación de json-server
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Deberás tener este formato y te dejo un poco de data para que puedas probar 👀
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```javascript
+{
+  "users": [
+    {
+      "fullname": "Hans admin",
+      "email": "hans@gmail.com",
+      "role": "admin",
+      "password": "12345",
+      "id": 5
+    },
+    {
+      "fullname": "Jorge Medina",
+      "email": "jorge@gmail.com",
+      "role": "user",
+      "password": "12345",
+      "id": 6
+    }
+  ],
+  "teachers": [
+    {
+      "id": 1,
+      "fullname": "Juan Teachers",
+      "enabled": "disabled",
+      "course": [
+        {
+          "id": 2,
+          "title": "React",
+          "description": "Specialist in React 2023",
+          "type": [
+            "PROGRAMMING",
+            "TECHNOLOGY"
+          ],
+          "enabled": true
+        }
+      ]
+    }
+  ],
+  "students": [
+    {
+      "id": 2,
+      "name": "sarahhh",
+      "lastname": "Johnson",
+      "email": "sarah.johnson@example.com",
+      "enabled": true,
+      "courses": [
+        {
+          "course": {
+            "id": 1,
+            "title": "Java",
+            "description": "Specialist in Java 2023",
+            "type": [
+              "PROGRAMMING",
+              "TECHNOLOGY"
+            ],
+            "enabled": true,
+            "url": "https://static-00.iconduck.com/assets.00/java-icon-2048x2048-yxty4s2p.png"
+          },
+          "finished": false
+        },
+        {
+          "course": {
+            "id": 2,
+            "title": "React",
+            "description": "Specialist in React 2023",
+            "type": [
+              "PROGRAMMING",
+              "TECHNOLOGY"
+            ],
+            "enabled": true,
+            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"
+          },
+          "finished": false
+        }
+      ]
+    },
+    {
+      "name": "Example",
+      "lastname": "Example lastanem",
+      "email": "a@gmail.com",
+      "course": "1",
+      "enabled": true,
+      "courses": [
+        {
+          "course": {
+            "id": 1,
+            "title": "Java",
+            "description": "Specialist in Java 2023",
+            "type": [
+              "PROGRAMMING",
+              "TECHNOLOGY"
+            ],
+            "enabled": true,
+            "url": "https://static-00.iconduck.com/assets.00/java-icon-2048x2048-yxty4s2p.png"
+          },
+          "finished": false
+        }
+      ],
+      "id": 3
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "title": "Java",
+      "description": "Specialist in Java 2023",
+      "type": [
+        "PROGRAMMING",
+        "TECHNOLOGY"
+      ],
+      "enabled": true,
+      "url": "https://static-00.iconduck.com/assets.00/java-icon-2048x2048-yxty4s2p.png"
+    },
+    {
+      "id": 2,
+      "title": "React",
+      "description": "Specialist in React 2023",
+      "type": [
+        "PROGRAMMING",
+        "TECHNOLOGY"
+      ],
+      "enabled": true,
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"
+    },
+    {
+      "id": 3,
+      "title": "Power BI",
+      "description": "Specialist in Power BI 2023",
+      "type": [
+        "DATA",
+        "TECHNOLOGY"
+      ],
+      "enabled": true,
+      "url": "https://static-00.iconduck.com/assets.00/power-bi-icon-1536x2048-0xah5g2o.png"
+    },
+    {
+      "title": "GO",
+      "description": "course go",
+      "url": "https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_go_gopher_icon_130571.png",
+      "type": [
+        "PROGRAMMING",
+        "TECHNOLOGY"
+      ],
+      "enabled": true,
+      "id": 4
+    }
+  ]
+}
+```

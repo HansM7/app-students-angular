@@ -6,6 +6,9 @@ import { IUser } from 'src/app/core/models/interface/user.interface';
 import { UserService } from '../../services/user.service';
 import { DialogRegisterComponentUser } from '../../components/dialogs-user/dialog-register/dialog-register.component';
 import { DialogDeleteComponentUser } from '../../components/dialogs-user/dialog-delete/dialog-delete.component';
+import { Store } from '@ngrx/store';
+import { selectAlertState } from 'src/app/core/store/alert/alert.selector';
+import { AlertActions } from 'src/app/core/store/alert/alert.actions';
 
 @Component({
   selector: 'app-users',
@@ -13,6 +16,7 @@ import { DialogDeleteComponentUser } from '../../components/dialogs-user/dialog-
   styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
+  isAlert: boolean = false;
   dataUsers: IUser[] = [];
   dataSource: MatTableDataSource<IUser> = new MatTableDataSource(
     this.dataUsers
@@ -26,10 +30,20 @@ export class UsersComponent implements OnInit {
     'delete',
   ];
 
-  constructor(public dialog: MatDialog, private userService: UserService) {
+  user: any;
+
+  constructor(
+    public dialog: MatDialog,
+    private userService: UserService,
+    private store: Store
+  ) {
     this.userService.getUsers().subscribe((data: IUser[]) => {
       this.dataUsers = data;
       this.dataSource.data = this.dataUsers;
+    });
+    this.user = this.userService.captureUser();
+    this.store.select(selectAlertState).subscribe((response: any) => {
+      this.isAlert = response.active;
     });
   }
 
@@ -38,10 +52,15 @@ export class UsersComponent implements OnInit {
   openDialogRegister(): void {
     const dialogRef = this.dialog.open(DialogRegisterComponentUser);
     dialogRef.afterClosed().subscribe(() => {
+      this.store.dispatch(AlertActions.show());
       this.userService.getUsers().subscribe((data: IUser[]) => {
         this.dataUsers = data;
         this.dataSource.data = this.dataUsers;
       });
+
+      setTimeout(() => {
+        this.store.dispatch(AlertActions.hidden());
+      }, 2000);
     });
   }
 

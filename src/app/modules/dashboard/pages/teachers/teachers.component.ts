@@ -12,6 +12,7 @@ import { DialogDetailComponentTeacher } from '../../components/dialogs-teacher/d
 import { CourseService } from '../../services/course.service';
 import { TeacherService } from '../../services/teacher.service';
 import { map } from 'rxjs';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-teachers',
@@ -33,10 +34,13 @@ export class TeachersComponent implements OnInit {
   ];
   dataCourses!: ICourse[];
 
+  user: any;
+
   constructor(
     public dialog: MatDialog,
     private courseService: CourseService,
-    private teacherService: TeacherService
+    private teacherService: TeacherService,
+    private userService: UserService
   ) {
     this.teacherService.findTeachers().subscribe((response) => {
       this.teachers = response;
@@ -45,6 +49,7 @@ export class TeachersComponent implements OnInit {
     this.courseService.findCourses().subscribe((response) => {
       this.dataCourses = response;
     });
+    this.user = this.userService.captureUser();
   }
 
   ngOnInit() {}
